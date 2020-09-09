@@ -1,14 +1,17 @@
-# YamlConfiger --- AMQ configurator
+# yacfg --- YAML Assisted Content Focused Generator
 
-This tool can generate a set of configuration files mainly needed for
-AMQ Broker, but it is not limited to only generating files for one product.
+This tool can generate a set of configuration files or any documents in fact
+from a template and a set of data called profile. Originally it was created
+to help with configuring Apache ActiveMQ Artemis Broker, but it was modified
+then to be used as general templating tool. Internally it uses jinja2, and
+it can server as easy to use Command line interface to jinja2 if you want.
 
-YamlConfiger has a user facing Command Line Tool for quick and easy command line usage.
+yacfg has a user facing Command Line Tool for quick and easy command line usage.
 Furthermore, it is possible to use its API in your python code.
 
 ## Documentation
 
-Formatted documentation can be viewed at [rh-messaging-qe.github.io/YamlConfiger/index.html](https://rh-messaging-qe.github.io/YamlConfiger/index.html).
+Formatted documentation can be viewed at [rh-messaging-qe.github.io/yacfg/index.html](https://rh-messaging-qe.github.io/yacfg/index.html).
 
 ## Contributing
 
@@ -21,7 +24,7 @@ _Alphabetically ordered_
 * Dominik Lenoch <dlenoch@redhat.com>
 * Zdenek Kraus <zkraus@redhat.com>
 
-See GitHub statistics for an [up-to-date list of contributors](https://github.com/rh-messaging-qe/YamlConfiger/graphs/contributors).
+See GitHub statistics for an [up-to-date list of contributors](https://github.com/rh-messaging-qe/yacfg/graphs/contributors).
 
 ## License
 

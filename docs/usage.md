@@ -1,6 +1,6 @@
 # Usage
 
-Configuration for YamlConfiger is specified in a *template*.
+Configuration for yacfg is specified in a *template*.
 This is a directory containing files using the Jinja 2 template syntax.
 
 To generate a configuration, specify a *profile* containing values substituted into the template.
