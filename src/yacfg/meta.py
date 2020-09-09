@@ -13,11 +13,14 @@
 # limitations under the License.
 
 NAME = 'yacfg'
-VERSION = '0.7.0'
+VERSION = '0.8.0'
 SHORT_DESCRIPTION = 'Template based configuration generator'
 DESCRIPTION = (
     'Template based configuration files generator based on jinja2 and yaml'
-    ' mainly focused on Apache ActiveMQ Artemis and related projects'
+    ' or it may be used as user direct command line interface to jinja2 for'
+    ' documents. this is just a core command line tool and pre-made templates'
+    ' and profiles should be available via additional packages, alternatively,'
+    ' you always can create custom.'
 )
 TEMPLATES = 'templates'
 PROFILES = 'profiles'
