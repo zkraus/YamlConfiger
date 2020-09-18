@@ -93,9 +93,9 @@ def list_profiles():
         tmp_files = [
             fn
             for fn in files if (
-                fn.endswith('.yaml')
-                or fn.endswith('.jinja2')
-                or fn.endswith('.j2')
+                    fn.endswith('.yaml')
+                    or fn.endswith('.jinja2')
+                    or fn.endswith('.j2')
             )
         ]
         # add relative profile path if it is not profiles root,
@@ -108,6 +108,19 @@ def list_profiles():
         result += tmp_files
 
     result = [posixpath.join(*i.split(os.path.sep)) for i in result]
+
+    return result
+
+
+def list_all(name_filter):
+    profiles = list_profiles()
+    templates = list_templates()
+
+    rex = re.compile(name_filter)
+
+    objects = ["profiles/" + profile for profile in profiles] + ["templates/" + template for template in templates]
+
+    result = [item for item in objects if rex.search(item)]
 
     return result
 

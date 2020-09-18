@@ -110,6 +110,12 @@ group_query.add_argument(
     action='store_true'
 )
 
+group_query.add_argument(
+    '--list',
+    help='Print a list of available profiles and templates, can be filtered by provided regular expression',
+)
+
+
 # Group Creator
 group_creator = parser.add_argument_group(
     title='Creator Options',

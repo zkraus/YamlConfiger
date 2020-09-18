@@ -27,7 +27,7 @@ from .output import (
     new_profile, new_profile_rendered,
     new_template, export_tuning_variables
 )
-from .query import list_templates, list_profiles
+from .query import list_templates, list_profiles, list_all
 
 from . import logger_settings
 
@@ -81,6 +81,11 @@ def main():
     if options.list_profiles:
         LOG.info('Available Profiles:')
         print(os.linesep.join(list_profiles()))
+        return
+
+    if options.list:
+        LOG.info('Available documents:')
+        print(os.linesep.join(list_all(options.list)))
         return
 
     error_do_not_generate = False
