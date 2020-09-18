@@ -115,6 +115,13 @@ group_query.add_argument(
     help='Print a list of available profiles and templates, can be filtered by provided regular expression',
 )
 
+group_query.add_argument(
+    '--absolute-paths',
+    help='When listing, use absolute path for profiles and templates',
+    action='store_true',
+    default=False,
+)
+
 
 # Group Creator
 group_creator = parser.add_argument_group(

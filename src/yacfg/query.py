@@ -56,17 +56,28 @@ def list_templates():
     module_path = get_module_path()
 
     templates_path = os.path.join(module_path, TEMPLATES)
-    result = []
+    result = search_templates(templates_path)
 
+    return result
+
+
+def search_templates(templates_path):
+    """Search for templates in provided path
+
+    :param templates_path: path to search
+    :type templates_path: str
+
+    :return: list of found templates
+    :rtype: list[str]
+    """
+    result = []
     for root, subdirs, files in os.walk(templates_path):
         for fn in files:
             if fn == '_template':
                 prefix_path = os.path.relpath(root, templates_path)
                 result.append(prefix_path)
                 break
-
     result = [posixpath.join(*i.split(os.path.sep)) for i in result]
-
     return result
 
 
@@ -82,6 +93,41 @@ def list_profiles():
     module_path = get_module_path()
     profiles_path = os.path.join(module_path, PROFILES)
 
+    result = search_profiles(profiles_path)
+
+    return result
+
+
+def list_profiles_all(aux_path_list=None, absolute=False):
+    if aux_path_list is None:
+        aux_path_list = []
+
+    module_path = get_module_path()
+
+    path_list = [
+        os.path.join(module_path, PROFILES),
+        os.path.join(os.getcwd(), PROFILES),
+    ]
+    path_list.extend(aux_path_list)
+
+    result = []
+    for path in path_list:
+        result.extend(search_profiles(path, absolute))
+
+    return result
+
+
+def search_profiles(profiles_path, absolute=False):
+    """Search for profile files in provided path
+
+    :param profiles_path: path to search
+    :type profiles_path: str
+    :param absolute: if True result will contain full path to the profiles (default: False)
+    :type absolute: bool
+
+    :return: list of found profiles
+    :rtype: list[str]
+    """
     result = []
     for root, _, files in os.walk(profiles_path):
         prefix_path = os.path.relpath(root, profiles_path)
@@ -105,10 +151,11 @@ def list_profiles():
                 os.path.join(prefix_path, fn)
                 for fn in tmp_files
             ]
+        if absolute:
+            tmp_files = [os.path.join(profiles_path, fn) for fn in tmp_files]
         result += tmp_files
 
-    result = [posixpath.join(*i.split(os.path.sep)) for i in result]
-
+    # result = [posixpath.join(*i.split(os.path.sep)) for i in result]
     return result
 
 
